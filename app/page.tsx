@@ -69,7 +69,7 @@ export default function LandingPage() {
                             </div>
                             <h3 className="text-xl font-semibold mb-2">Smart Intake</h3>
                             <p className="text-sm text-muted-foreground">
-                                "Aadhya" conducts structured pre-consultation interviews, collecting history and generating clinical summaries before you even see the patient.
+                                "HealthBot" conducts structured pre-consultation interviews, collecting history and generating clinical summaries before you even see the patient.
                             </p>
                         </div>
 
