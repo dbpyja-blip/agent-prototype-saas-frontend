@@ -498,29 +498,39 @@ export default function ConsultationNotesPage() {
                                     <p className="text-sm text-muted-foreground animate-pulse">Analyzing clinical context...</p>
                                 </div>
                             ) : soapNote ? (
-                                <div className="space-y-6 animate-in fade-in duration-500">
-                                    {/* Subjective */}
-                                    <div className="bg-muted/30 p-4 rounded-md border-l-4 border-blue-500">
-                                        <h3 className="text-sm font-bold text-blue-400 uppercase tracking-wide mb-2">Subjective</h3>
-                                        <p className="text-foreground text-sm leading-relaxed">{soapNote.subjective || soapNote.Subjective}</p>
-                                    </div>
+                                <div className="max-h-[500px] overflow-y-auto bg-muted/30 rounded-md border border-border/50 animate-in fade-in duration-500">
+                                    <div className="space-y-0 divide-y divide-border/40">
+                                        {/* Subjective */}
+                                        {(soapNote.subjective || soapNote.Subjective) && (
+                                            <div className="p-4 border-l-4 border-blue-500">
+                                                <h3 className="text-sm font-bold text-blue-400 uppercase tracking-wide mb-2">Subjective</h3>
+                                                <p className="text-foreground text-sm leading-relaxed whitespace-pre-wrap">{soapNote.subjective || soapNote.Subjective}</p>
+                                            </div>
+                                        )}
 
-                                    {/* Objective */}
-                                    <div className="bg-muted/30 p-4 rounded-md border-l-4 border-green-500">
-                                        <h3 className="text-sm font-bold text-green-400 uppercase tracking-wide mb-2">Objective</h3>
-                                        <p className="text-foreground text-sm leading-relaxed">{soapNote.objective || soapNote.Objective}</p>
-                                    </div>
+                                        {/* Objective */}
+                                        {(soapNote.objective || soapNote.Objective) && (
+                                            <div className="p-4 border-l-4 border-green-500">
+                                                <h3 className="text-sm font-bold text-green-400 uppercase tracking-wide mb-2">Objective</h3>
+                                                <p className="text-foreground text-sm leading-relaxed whitespace-pre-wrap">{soapNote.objective || soapNote.Objective}</p>
+                                            </div>
+                                        )}
 
-                                    {/* Assessment */}
-                                    <div className="bg-muted/30 p-4 rounded-md border-l-4 border-yellow-500">
-                                        <h3 className="text-sm font-bold text-yellow-400 uppercase tracking-wide mb-2">Assessment</h3>
-                                        <p className="text-foreground text-sm leading-relaxed">{soapNote.assessment || soapNote.Assessment}</p>
-                                    </div>
+                                        {/* Assessment */}
+                                        {(soapNote.assessment || soapNote.Assessment) && (
+                                            <div className="p-4 border-l-4 border-yellow-500">
+                                                <h3 className="text-sm font-bold text-yellow-400 uppercase tracking-wide mb-2">Assessment</h3>
+                                                <p className="text-foreground text-sm leading-relaxed whitespace-pre-wrap">{soapNote.assessment || soapNote.Assessment}</p>
+                                            </div>
+                                        )}
 
-                                    {/* Plan */}
-                                    <div className="bg-muted/30 p-4 rounded-md border-l-4 border-red-500">
-                                        <h3 className="text-sm font-bold text-red-400 uppercase tracking-wide mb-2">Plan</h3>
-                                        <p className="text-foreground text-sm leading-relaxed">{soapNote.plan || soapNote.Plan}</p>
+                                        {/* Plan */}
+                                        {(soapNote.plan || soapNote.Plan) && (
+                                            <div className="p-4 border-l-4 border-red-500">
+                                                <h3 className="text-sm font-bold text-red-400 uppercase tracking-wide mb-2">Plan</h3>
+                                                <p className="text-foreground text-sm leading-relaxed whitespace-pre-wrap">{soapNote.plan || soapNote.Plan}</p>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             ) : null}
