@@ -24,22 +24,24 @@ export default function PreConsultationPage() {
     const [input, setInput] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [isRecording, setIsRecording] = useState(false);
+    // Always generate a FRESH session ID on every page load.
+    // We deliberately do NOT read from localStorage here — doing so was
+    // causing the backend to resume the old conversation after a refresh.
     const [sessionId] = useState(() => {
+        const newId = `session_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
         if (typeof window !== "undefined") {
-            const stored = localStorage.getItem("pre_consult_session_id");
-            if (stored) return stored;
-            const newId = `session_${Date.now()}`;
-            localStorage.setItem("pre_consult_session_id", newId);
-            return newId;
+            // Clear any stale session so it can never be accidentally reused
+            localStorage.removeItem("pre_consult_session_id");
         }
-        return `session_${Date.now()}`;
+        return newId;
     });
 
+    // userId represents the person, not the session — it's fine to persist this.
     const [userId] = useState(() => {
         if (typeof window !== "undefined") {
             const stored = localStorage.getItem("pre_consult_user_id");
             if (stored) return stored;
-            const newId = `user_${Date.now()}`;
+            const newId = `user_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
             localStorage.setItem("pre_consult_user_id", newId);
             return newId;
         }
