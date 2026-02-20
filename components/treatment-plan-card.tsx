@@ -65,6 +65,9 @@ export function TreatmentPlanCard({ plans }: TreatmentPlanCardProps) {
 
     // Support both formats: service or hair_transplant
     const serviceData = currentPlan.details.service || currentPlan.details.hair_transplant;
+    // Grafts and method can live at top-level details OR inside service
+    const graftsValue = currentPlan.details.grafts ?? serviceData?.grafts;
+    const methodValue = currentPlan.details.method ?? serviceData?.method ?? currentPlan.details.service?.method;
     // Safely access arrays, defaulting to empty if undefined
     const medications = currentPlan.details.medications || [];
     const lab_tests = currentPlan.details.lab_tests || [];
@@ -85,6 +88,15 @@ export function TreatmentPlanCard({ plans }: TreatmentPlanCardProps) {
                 }
                 updated[currentIndex].details.hair_transplant![field] = value;
             }
+            return updated;
+        });
+    };
+
+    // Update top-level details fields (grafts, method)
+    const updateDetails = (field: string, value: any) => {
+        setEditedPlans((prev) => {
+            const updated = [...prev];
+            updated[currentIndex].details[field] = value;
             return updated;
         });
     };
@@ -187,26 +199,33 @@ export function TreatmentPlanCard({ plans }: TreatmentPlanCardProps) {
                                 {serviceData.verified ? "✓ In Stock" : "✗ Out of Stock"}
                             </span>
                         </div>
-                        <div className="grid grid-cols-2 gap-3">
-                            <label className="flex flex-col gap-1.5">
-                                <span className="text-xs font-medium text-muted-foreground">Grafts</span>
-                                <input
-                                    type="number"
-                                    value={serviceData.grafts || currentPlan.details.grafts || ""}
-                                    onChange={(e) => updateService("grafts", parseInt(e.target.value))}
-                                    className="px-3 py-2 border border-input bg-background rounded-lg text-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                                />
-                            </label>
-                            <label className="flex flex-col gap-1.5">
-                                <span className="text-xs font-medium text-muted-foreground">Method</span>
-                                <input
-                                    type="text"
-                                    value={serviceData.method || ""}
-                                    onChange={(e) => updateService("method", e.target.value)}
-                                    className="px-3 py-2 border border-input bg-background rounded-lg text-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                                />
-                            </label>
-                        </div>
+                        {/* Only show grafts/method if they actually exist in the plan data */}
+                        {(graftsValue !== undefined && graftsValue !== null) || (methodValue !== undefined && methodValue !== null) ? (
+                            <div className="grid grid-cols-2 gap-3">
+                                {(graftsValue !== undefined && graftsValue !== null) && (
+                                    <label className="flex flex-col gap-1.5">
+                                        <span className="text-xs font-medium text-muted-foreground">Grafts</span>
+                                        <input
+                                            type="number"
+                                            value={graftsValue}
+                                            onChange={(e) => updateDetails("grafts", parseInt(e.target.value))}
+                                            className="px-3 py-2 border border-input bg-background rounded-lg text-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                                        />
+                                    </label>
+                                )}
+                                {(methodValue !== undefined && methodValue !== null) && (
+                                    <label className="flex flex-col gap-1.5">
+                                        <span className="text-xs font-medium text-muted-foreground">Method</span>
+                                        <input
+                                            type="text"
+                                            value={methodValue}
+                                            onChange={(e) => updateDetails("method", e.target.value)}
+                                            className="px-3 py-2 border border-input bg-background rounded-lg text-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                                        />
+                                    </label>
+                                )}
+                            </div>
+                        ) : null}
                     </div>
                 </div>
             )}
