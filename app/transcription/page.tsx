@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { Mic, Square, Play, Pause, Upload, Loader2 } from "lucide-react";
+import { Mic, Square, Play, Pause, Upload, Loader2, Home } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useToast } from "@/components/ui/use-toast";
@@ -166,7 +166,7 @@ export default function TranscriptionPage() {
             <Toaster />
             <div className="max-w-4xl mx-auto space-y-8 py-8">
                 {/* Header */}
-                <div className="flex items-center justify-between">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                     <div>
                         <h1 className="text-3xl font-bold tracking-tight text-foreground">
                             Transcription
@@ -175,8 +175,12 @@ export default function TranscriptionPage() {
                             Record voice or upload audio file
                         </p>
                     </div>
-                    <Link href="/dashboard">
-                        <Button variant="outline">Back to Home</Button>
+                    <Link href="/dashboard" className="self-start sm:self-auto">
+                        <Button variant="outline" className="whitespace-nowrap">
+                            <Home className="h-4 w-4 sm:mr-2" />
+                            <span className="hidden sm:inline">Back to Home</span>
+                            <span className="sm:hidden">Home</span>
+                        </Button>
                     </Link>
                 </div>
 
