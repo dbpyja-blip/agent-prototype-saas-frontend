@@ -372,7 +372,7 @@ export default function PreConsultationPage() {
                                         }`}>
                                         <p className={`text-sm font-mono text-muted-foreground mb-1 ${message.role === "user" ? "text-right" : ""
                                             }`}>
-                                            {message.role === "user" ? "You" : "AADHYA"}
+                                            {message.role === "user" ? "You" : "HEALTHBOT"}
                                         </p>
                                         <div
                                             className={`inline-block p-3 ${message.role === "user"
@@ -436,7 +436,7 @@ export default function PreConsultationPage() {
                                 </div>
                                 <div>
                                     <p className="text-sm font-mono text-muted-foreground mb-1">
-                                        AADHYA
+                                        HEALTHBOT
                                     </p>
                                     <div className="inline-block p-3 bg-secondary">
                                         <LoadingDots variant="light" />
