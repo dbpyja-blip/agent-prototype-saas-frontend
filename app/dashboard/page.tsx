@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Mic, MessageSquare, FileText, ArrowRight, Stethoscope, ShieldCheck } from "lucide-react";
+import { Mic, MessageSquare, FileText, ArrowRight, Stethoscope, ShieldCheck, ClipboardPlus } from "lucide-react";
 
 export default function DashboardPage() {
     return (
@@ -108,6 +108,24 @@ export default function DashboardPage() {
                             </h3>
                             <p className="text-muted-foreground text-sm">
                                 Upload a prescription PDF for AI drug interaction and FDA safety analysis
+                            </p>
+                        </div>
+                    </Link>
+
+                    {/* EMR */}
+                    <Link href="/emr" className="group">
+                        <div className="h-full border border-border bg-card p-8 transition-colors hover:bg-card/80 hover:border-muted-foreground/30">
+                            <div className="flex items-start justify-between mb-6">
+                                <div className="p-3 bg-secondary">
+                                    <ClipboardPlus className="h-6 w-6 text-foreground" />
+                                </div>
+                                <ArrowRight className="h-5 w-5 text-muted-foreground group-hover:text-foreground transition-colors" />
+                            </div>
+                            <h3 className="text-xl font-semibold mb-2 text-foreground">
+                                MedRecord AI
+                            </h3>
+                            <p className="text-muted-foreground text-sm">
+                                Upload medical documents, get AI summaries, and chat with your records as patient or doctor
                             </p>
                         </div>
                     </Link>
