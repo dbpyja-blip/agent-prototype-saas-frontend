@@ -200,11 +200,12 @@ export default function WarmingUpPage() {
         // Next.js inlines NEXT_PUBLIC_ env vars at build time via process.env
         // We access them via a lookup so TypeScript doesn't complain about dynamic keys
         const envMap: Record<string, string | undefined> = {
-            NEXT_PUBLIC_PRECONSULTATION_BACKEND_URL:  process.env.NEXT_PUBLIC_PRECONSULTATION_BACKEND_URL,
-            NEXT_PUBLIC_CONSULTATION_BACKEND_URL:     process.env.NEXT_PUBLIC_CONSULTATION_BACKEND_URL,
+            NEXT_PUBLIC_PRECONSULTATION_BACKEND_URL:   process.env.NEXT_PUBLIC_PRECONSULTATION_BACKEND_URL,
+            NEXT_PUBLIC_CONSULTATION_BACKEND_URL:      process.env.NEXT_PUBLIC_CONSULTATION_BACKEND_URL,
             NEXT_PUBLIC_TREATMENT_PLANNER_BACKEND_URL: process.env.NEXT_PUBLIC_TREATMENT_PLANNER_BACKEND_URL,
-            NEXT_PUBLIC_TRANSCRIPTION_BACKEND_URL:    process.env.NEXT_PUBLIC_TRANSCRIPTION_BACKEND_URL,
-            NEXT_PUBLIC_PRESCRIPTION_BACKEND_URL:     process.env.NEXT_PUBLIC_PRESCRIPTION_BACKEND_URL,
+            NEXT_PUBLIC_TRANSCRIPTION_BACKEND_URL:     process.env.NEXT_PUBLIC_TRANSCRIPTION_BACKEND_URL,
+            NEXT_PUBLIC_PRESCRIPTION_BACKEND_URL:      process.env.NEXT_PUBLIC_PRESCRIPTION_BACKEND_URL,
+            NEXT_PUBLIC_EMR_BACKEND_URL:               process.env.NEXT_PUBLIC_EMR_BACKEND_URL,
         };
         return (envMap[agent.envVar] ?? agent.fallback).replace(/\/$/, "");
     };
