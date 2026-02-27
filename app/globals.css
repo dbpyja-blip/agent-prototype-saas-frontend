@@ -115,3 +115,12 @@
     background: transparent;
   }
 }
+
+/* Hide scrollbar on chip rows while keeping horizontal scroll functional */
+.scrollbar-none {
+  -ms-overflow-style: none;   /* IE / Edge */
+  scrollbar-width: none;      /* Firefox */
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none !important;   /* Chrome / Safari / Opera — beats the global * rule */
+}
