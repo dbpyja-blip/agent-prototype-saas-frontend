@@ -37,7 +37,7 @@ export default function LandingPage() {
                     <SignedIn>
                         <Link href="/warming-up">
                             <Button size="lg" className="h-12 px-8 text-base rounded-full shadow-lg shadow-primary/20 transition-transform hover:scale-105">
-                                Go to Dashboard
+                                Launch AI Workspace
                                 <ArrowRight className="ml-2 h-4 w-4" />
                             </Button>
                         </Link>
