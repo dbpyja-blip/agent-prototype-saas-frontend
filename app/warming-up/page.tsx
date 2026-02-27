@@ -90,6 +90,17 @@ const AGENTS: AgentDef[] = [
         color: "text-red-500",
         bgColor: "bg-red-500/10",
     },
+    {
+        id: "emr",
+        label: "MedRecord AI",
+        description: "Medical document intelligence & patient chat",
+        icon: FileText,
+        envVar: "NEXT_PUBLIC_EMR_BACKEND_URL",
+        fallback: "http://localhost:8010",
+        healthPath: "/",
+        color: "text-indigo-500",
+        bgColor: "bg-indigo-500/10",
+    },
 ];
 
 // Maximum wall-clock time to keep trying one agent before marking it as failed (2 minutes)
