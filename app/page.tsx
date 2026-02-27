@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Bot, Shield, Stethoscope, FileText, Activity } from "lucide-react";
+import { ArrowRight, Bot, Shield, Stethoscope, FileText, Activity, Database } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
 
@@ -61,7 +61,8 @@ export default function LandingPage() {
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {/* 5-card layout: 3 on first row + 2 centered on second row */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {/* Feature 1 */}
                         <div className="bg-card border border-border p-6 rounded-2xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1">
                             <div className="h-12 w-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4 text-primary">
@@ -103,6 +104,17 @@ export default function LandingPage() {
                             <h3 className="text-xl font-semibold mb-2">Safety Checks</h3>
                             <p className="text-sm text-muted-foreground">
                                 Instant FDA-backed analysis of prescriptions to detect drug interactions, contraindications, and safety risks.
+                            </p>
+                        </div>
+
+                        {/* Feature 5 — EMR MedRead */}
+                        <div className="bg-card border border-border p-6 rounded-2xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1">
+                            <div className="h-12 w-12 bg-purple-500/10 rounded-xl flex items-center justify-center mb-4 text-purple-600">
+                                <Database className="h-6 w-6" />
+                            </div>
+                            <h3 className="text-xl font-semibold mb-2">EMR MedRead</h3>
+                            <p className="text-sm text-muted-foreground">
+                                Upload PDFs, scans, X-rays, and prescriptions. AI decodes, summarises, and indexes every document into a searchable RAG vault — patients and doctors can chat with the records instantly.
                             </p>
                         </div>
                     </div>
