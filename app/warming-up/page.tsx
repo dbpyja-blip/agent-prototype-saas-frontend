@@ -318,7 +318,7 @@ export default function WarmingUpPage() {
                             className="w-full h-12 text-base gap-2 rounded-xl shadow-md shadow-primary/20"
                             onClick={() => router.push("/dashboard")}
                         >
-                            Enter Dashboard
+                            Start Using Your Agents
                             <ArrowRight className="h-4 w-4" />
                         </Button>
 
